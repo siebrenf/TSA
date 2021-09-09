@@ -1,0 +1,12 @@
+name: tsa
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+- scikit-learn
+- networkx
+- numpy
+- pandas
+- qnorm
+- matplotlib
+- seaborn
