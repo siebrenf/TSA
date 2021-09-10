@@ -96,16 +96,21 @@ all_stages = [
 ][:-6]
 
 # query alignments
-# alignments = {
+alignment_files = {
+    "white": "data/white_stage_white_stage_mapping.tsv",
+    "levin": "data/white_stage_levin_stage_mapping.tsv",
+    "marletaz": "data/white_stage_marletaz_stage_mapping.tsv",
+}
+# alignment_files = {
 #     "white": "data/white_mpf_white_mpf_mapping.tsv",
 #     "levin": "data/white_mpf_levin_mpf_mapping.tsv",
 #     "marletaz": "data/white_mpf_marletaz_mpf_mapping.tsv",
 # }
-alignments = {
-    "white": "data/white_mpf_1000_white_mpf_mapping.tsv",
-    "levin": "data/white_mpf_1000_levin_mpf_mapping.tsv",
-    "marletaz": "data/white_mpf_1000_marletaz_mpf_mapping.tsv",
-}
+# alignment_files = {
+#     "white": "data/white_mpf_1000_white_mpf_mapping.tsv",
+#     "levin": "data/white_mpf_1000_levin_mpf_mapping.tsv",
+#     "marletaz": "data/white_mpf_1000_marletaz_mpf_mapping.tsv",
+# }
 
 plt.rcParams['figure.figsize'] = [24, 8]
 fig = plt.figure(1)
@@ -114,7 +119,7 @@ ax2 = ax1.twiny()
 
 n = 0
 ylabels = []
-for series in alignments:
+for series in alignment_files:
     df = pd.read_csv(alignments[series], sep="\t")
     x1 = df["original_time"]
     x2 = df["inferred_time"]
