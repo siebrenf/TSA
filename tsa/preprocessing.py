@@ -6,19 +6,15 @@ from qnorm import quantile_normalize
 def tpm_normalization(
         tpms: pd.DataFrame,
         column_order: list,
-        template=False,
-        minimum_value: int = 5,
-        verbose: bool = True,
+        minimum_value: int = None,
 ) -> pd.DataFrame:
     """filter and order a tpm table, then quantile normalize and log transform"""
-    # batch TPMs
     bc = tpms[column_order]                       # filter & order samples
-    if template:
+    if minimum_value:
         b4 = bc.shape[0]
         bc = bc[bc.max(axis=1) >= minimum_value]  # filter genes
         aft = b4 - bc.shape[0]
-        if verbose:
-            print(f"Genes with TPM below {minimum_value}: {aft} of {b4} ({round(100*aft/b4,0)}%)")
+        print(f"Genes with TPM below {minimum_value}: {aft} of {b4} ({round(100*aft/b4,0)}%)")
     bc = quantile_normalize(bc, axis=1)           # normalize
     bc = np.log2(bc+1)                            # transform
     return bc

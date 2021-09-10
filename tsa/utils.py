@@ -16,6 +16,12 @@ def all_numeric(query: Iterable) -> bool:
     return all(isfloat(n) for n in query)
 
 
+def list2floats(lst):
+    if all_numeric(lst):
+        lst = [float(t) for t in lst]
+    return lst
+
+
 def _str_inf_ts(timepoints, n):
     t_extended = []
     for t in timepoints:

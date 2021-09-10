@@ -3,12 +3,19 @@ import numpy as np
 import pandas as pd
 
 
+# def clostest_number(n, lst):
+#     return min(lst, key=lambda x: abs(x - n))
+
+
 def plot_alignments(template_time: list, extended_template_time: list, alignment_files: dict):
     # x axis
     df = pd.DataFrame({
         "template_time": extended_template_time,
         "x": list(range(len(extended_template_time))),
     })
+    # try:
+    #     xticks = [clostest_number(n, extended_template_time) for n in template_time]
+    # except TypeError:
     xticks = df[df["template_time"].isin(template_time)]["x"].to_list()
     xlabels = template_time
     for n, timeseries in enumerate(alignment_files):
@@ -38,6 +45,7 @@ def plot_alignments(template_time: list, extended_template_time: list, alignment
     plt.yticks(list(range(n_series)), ylabels)
     plt.ylim(-0.5, n_series - 0.5)
     plt.ylabel("time series")
+    plt.xlabel("template time")
 
     plt.xlim(min(xticks) - x_range * 0.03, max(xticks) + x_range * 0.03)
     ax1.set_xticks(xticks)
