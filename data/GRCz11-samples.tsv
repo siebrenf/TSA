@@ -1,0 +1,478 @@
+sample	assembly	technical_replicate	biological_replicate	batch	original_timepoint	mpf	hpf	stage
+GSM2837568	GRCz11		5-9-somites	marletaz	12_hpf	720	12	5-9-somites
+GSM2837569	GRCz11		14-19-somites	marletaz	16_hpf	960	16	14-19-somites
+GSM2837570	GRCz11		20-25-somites	marletaz	20_hpf	1200	20	20-25-somites
+GSM2837571	GRCz11		Prim-5	marletaz	26_hpf	1560	26	Prim-5
+GSM2837572	GRCz11		64-cell	marletaz	2_hpf	120	2	64-cell
+GSM2837573	GRCz11		Prim-15	marletaz	30_hpf	1800	30	Prim-15
+GSM2837574	GRCz11		Prim-25	marletaz	36_hpf	2160	36	Prim-25
+GSM2837575	GRCz11		Long-pec	marletaz	48_hpf	2880	48	Long-pec
+GSM2837576	GRCz11		Shield	marletaz	6_hpf	360	6	Shield
+GSM2837577	GRCz11		Protruding-mouth	marletaz	72_hpf	4320	72	Protruding-mouth
+GSM2837578	GRCz11		75pc-epiboly	marletaz	8_hpf	480	8	75pc-epiboly
+GSM1483736	GRCz11		1-cell	levin	40_mpf	40	0.67	1-cell
+GSM1483737	GRCz11		8-cell	levin	80_mpf	80	1.33	8-cell
+GSM1483738	GRCz11		64-cell	levin	120_mpf	120	2	64-cell
+GSM1483739	GRCz11		256-cell	levin	160_mpf	160	2.67	256-cell
+GSM1483740	GRCz11		High	levin	200_mpf	200	3.33	High
+GSM1483741	GRCz11		Sphere	levin	240_mpf	240	4	Sphere
+GSM1483742	GRCz11		30pc-epiboly	levin	280_mpf	280	4.67	30pc-epiboly
+GSM1483743	GRCz11		50pc-epiboly	levin	320_mpf	320	5.33	50pc-epiboly
+GSM1483744	GRCz11		Shield	levin	360_mpf	360	6	Shield
+GSM1483745	GRCz11		Shield	levin	400_mpf	400	6.67	Shield
+GSM1483746	GRCz11		Shield	levin	440_mpf	440	7.33	Shield
+GSM1483747	GRCz11		75pc-epiboly	levin	480_mpf	480	8	75pc-epiboly
+GSM1483748	GRCz11		75pc-epiboly	levin	520_mpf	520	8.67	75pc-epiboly
+GSM1483749	GRCz11		90pc-epiboly	levin	560_mpf	560	9.33	90pc-epiboly
+GSM1483750	GRCz11		Bud	levin	600_mpf	600	10	Bud
+GSM1483751	GRCz11		1-4-somites	levin	640_mpf	640	10.67	1-4-somites
+GSM1483752	GRCz11		1-4-somites	levin	680_mpf	680	11.33	1-4-somites
+GSM1483753	GRCz11		5-9-somites	levin	720_mpf	720	12	5-9-somites
+GSM1483754	GRCz11		5-9-somites	levin	760_mpf	760	12.67	5-9-somites
+GSM1483755	GRCz11		5-9-somites	levin	800_mpf	800	13.33	5-9-somites
+GSM1483756	GRCz11		10-13-somites	levin	840_mpf	840	14	10-13-somites
+GSM1483757	GRCz11		10-13-somites	levin	880_mpf	880	14.67	10-13-somites
+GSM1483758	GRCz11		10-13-somites	levin	920_mpf	920	15.33	10-13-somites
+GSM1483759	GRCz11		14-19-somites	levin	960_mpf	960	16	14-19-somites
+GSM1483760	GRCz11		14-19-somites	levin	1000_mpf	1000	16.67	14-19-somites
+GSM1483761	GRCz11		14-19-somites	levin	1040_mpf	1040	17.33	14-19-somites
+GSM1483762	GRCz11		14-19-somites	levin	1080_mpf	1080	18	14-19-somites
+GSM1483763	GRCz11		14-19-somites	levin	1120_mpf	1120	18.67	14-19-somites
+GSM1483764	GRCz11		20-25-somites	levin	1160_mpf	1160	19.33	20-25-somites
+GSM1483765	GRCz11		20-25-somites	levin	1200_mpf	1200	20	20-25-somites
+GSM1483766	GRCz11		20-25-somites	levin	1240_mpf	1240	20.67	20-25-somites
+GSM1483767	GRCz11		20-25-somites	levin	1280_mpf	1280	21.33	20-25-somites
+GSM1483768	GRCz11		26-somites	levin	1320_mpf	1320	22	26-somites
+GSM1483769	GRCz11		26-somites	levin	1360_mpf	1360	22.67	26-somites
+GSM1483770	GRCz11		26-somites	levin	1400_mpf	1400	23.33	26-somites
+GSM1483771	GRCz11		Prim-5	levin	1440_mpf	1440	24	Prim-5
+GSM1483772	GRCz11		Prim-5	levin	1480_mpf	1480	24.67	Prim-5
+GSM1483773	GRCz11		Prim-5	levin	1520_mpf	1520	25.33	Prim-5
+GSM1483774	GRCz11		Prim-5	levin	1560_mpf	1560	26	Prim-5
+GSM1483775	GRCz11		Prim-5	levin	1600_mpf	1600	26.67	Prim-5
+GSM1483776	GRCz11		Prim-5	levin	1640_mpf	1640	27.33	Prim-5
+GSM1483777	GRCz11		Prim-5	levin	1680_mpf	1680	28	Prim-5
+GSM1483778	GRCz11		Prim-5	levin	1720_mpf	1720	28.67	Prim-5
+GSM1483779	GRCz11		Prim-5	levin	1760_mpf	1760	29.33	Prim-5
+GSM1483780	GRCz11		Prim-15	levin	1800_mpf	1800	30	Prim-15
+GSM1483781	GRCz11		Prim-15	levin	1840_mpf	1840	30.67	Prim-15
+GSM1483782	GRCz11		Prim-15	levin	1880_mpf	1880	31.33	Prim-15
+GSM1483783	GRCz11		Prim-15	levin	1920_mpf	1920	32	Prim-15
+GSM1483784	GRCz11		Prim-15	levin	1960_mpf	1960	32.67	Prim-15
+GSM1483785	GRCz11		Prim-15	levin	2000_mpf	2000	33.33	Prim-15
+GSM1483786	GRCz11		Prim-15	levin	2040_mpf	2040	34	Prim-15
+GSM1483787	GRCz11		Prim-15	levin	2080_mpf	2080	34.67	Prim-15
+GSM1483788	GRCz11		Prim-15	levin	2120_mpf	2120	35.33	Prim-15
+GSM1483789	GRCz11		Prim-25	levin	2160_mpf	2160	36	Prim-25
+GSM1483790	GRCz11		Prim-25	levin	2200_mpf	2200	36.67	Prim-25
+GSM1483791	GRCz11		Prim-25	levin	2240_mpf	2240	37.33	Prim-25
+GSM1483792	GRCz11		Prim-25	levin	2280_mpf	2280	38	Prim-25
+GSM1483793	GRCz11		Prim-25	levin	2320_mpf	2320	38.67	Prim-25
+GSM1483794	GRCz11		Prim-25	levin	2360_mpf	2360	39.33	Prim-25
+GSM1483795	GRCz11		Prim-25	levin	2400_mpf	2400	40	Prim-25
+GSM1483796	GRCz11		Prim-25	levin	2440_mpf	2440	40.67	Prim-25
+GSM1483797	GRCz11		Prim-25	levin	2480_mpf	2480	41.33	Prim-25
+GSM1483798	GRCz11		High-pec	levin	2520_mpf	2520	42	High-pec
+GSM1483799	GRCz11		High-pec	levin	2560_mpf	2560	42.67	High-pec
+GSM1483800	GRCz11		High-pec	levin	2600_mpf	2600	43.33	High-pec
+GSM1483801	GRCz11		High-pec	levin	2640_mpf	2640	44	High-pec
+GSM1483802	GRCz11		High-pec	levin	2680_mpf	2680	44.67	High-pec
+GSM1483803	GRCz11		High-pec	levin	2720_mpf	2720	45.33	High-pec
+GSM1483804	GRCz11		High-pec	levin	2760_mpf	2760	46	High-pec
+GSM1483805	GRCz11		High-pec	levin	2800_mpf	2800	46.67	High-pec
+GSM1483806	GRCz11		High-pec	levin	2840_mpf	2840	47.33	High-pec
+GSM1483807	GRCz11		Long-pec	levin	2880_mpf	2880	48	Long-pec
+GSM1483808	GRCz11		Long-pec	levin	2920_mpf	2920	48.67	Long-pec
+GSM1483809	GRCz11		Long-pec	levin	2960_mpf	2960	49.33	Long-pec
+GSM1483810	GRCz11		Long-pec	levin	3000_mpf	3000	50	Long-pec
+GSM1483811	GRCz11		Long-pec	levin	3040_mpf	3040	50.67	Long-pec
+GSM1483812	GRCz11		Long-pec	levin	3080_mpf	3080	51.33	Long-pec
+GSM1483813	GRCz11		Long-pec	levin	3120_mpf	3120	52	Long-pec
+GSM1483814	GRCz11		Long-pec	levin	3160_mpf	3160	52.67	Long-pec
+GSM1483815	GRCz11		Long-pec	levin	3200_mpf	3200	53.33	Long-pec
+GSM1483816	GRCz11		Long-pec	levin	3240_mpf	3240	54	Long-pec
+GSM1483817	GRCz11		Long-pec	levin	3280_mpf	3280	54.67	Long-pec
+GSM1483818	GRCz11		Long-pec	levin	3320_mpf	3320	55.33	Long-pec
+GSM1483819	GRCz11		Long-pec	levin	3360_mpf	3360	56	Long-pec
+GSM1483820	GRCz11		Long-pec	levin	3400_mpf	3400	56.67	Long-pec
+GSM1483821	GRCz11		Long-pec	levin	3440_mpf	3440	57.33	Long-pec
+GSM1483822	GRCz11		Long-pec	levin	3480_mpf	3480	58	Long-pec
+GSM1483823	GRCz11		Long-pec	levin	3520_mpf	3520	58.67	Long-pec
+GSM1483824	GRCz11		Long-pec	levin	3560_mpf	3560	59.33	Long-pec
+GSM1483825	GRCz11		Pec-fin	levin	3600_mpf	3600	60	Pec-fin
+GSM1483826	GRCz11		Pec-fin	levin	3640_mpf	3640	60.67	Pec-fin
+GSM1483827	GRCz11		Pec-fin	levin	3680_mpf	3680	61.33	Pec-fin
+GSM1483828	GRCz11		Pec-fin	levin	3720_mpf	3720	62	Pec-fin
+GSM1483829	GRCz11		Pec-fin	levin	3760_mpf	3760	62.67	Pec-fin
+GSM1483830	GRCz11		Pec-fin	levin	3800_mpf	3800	63.33	Pec-fin
+GSM1483831	GRCz11		Pec-fin	levin	3840_mpf	3840	64	Pec-fin
+GSM1483832	GRCz11		Pec-fin	levin	3880_mpf	3880	64.67	Pec-fin
+GSM1483833	GRCz11		Pec-fin	levin	3920_mpf	3920	65.33	Pec-fin
+GSM1483834	GRCz11		Pec-fin	levin	3960_mpf	3960	66	Pec-fin
+GSM1483835	GRCz11		Pec-fin	levin	4000_mpf	4000	66.67	Pec-fin
+GSM1483836	GRCz11		Pec-fin	levin	4040_mpf	4040	67.33	Pec-fin
+GSM1483837	GRCz11		Pec-fin	levin	4080_mpf	4080	68	Pec-fin
+GSM1483838	GRCz11		Pec-fin	levin	4120_mpf	4120	68.67	Pec-fin
+GSM1483839	GRCz11		Pec-fin	levin	4160_mpf	4160	69.33	Pec-fin
+GSM1483840	GRCz11		Pec-fin	levin	4200_mpf	4200	70	Pec-fin
+GSM1483841	GRCz11		Pec-fin	levin	4240_mpf	4240	70.67	Pec-fin
+ERR1442561	GRCz11	50pc-epiboly-1	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442651	GRCz11	50pc-epiboly-1	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442741	GRCz11	50pc-epiboly-1	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442831	GRCz11	50pc-epiboly-1	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442562	GRCz11	50pc-epiboly-2	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442652	GRCz11	50pc-epiboly-2	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442742	GRCz11	50pc-epiboly-2	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442832	GRCz11	50pc-epiboly-2	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442563	GRCz11	50pc-epiboly-3	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442653	GRCz11	50pc-epiboly-3	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442743	GRCz11	50pc-epiboly-3	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442833	GRCz11	50pc-epiboly-3	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442564	GRCz11	50pc-epiboly-4	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442654	GRCz11	50pc-epiboly-4	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442744	GRCz11	50pc-epiboly-4	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442834	GRCz11	50pc-epiboly-4	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442565	GRCz11	50pc-epiboly-5	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442655	GRCz11	50pc-epiboly-5	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442745	GRCz11	50pc-epiboly-5	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442835	GRCz11	50pc-epiboly-5	50pc-epiboly	white	50pc-epiboly	315	5.25	50pc-epiboly
+ERR1442566	GRCz11	Prim-5-1	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442656	GRCz11	Prim-5-1	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442746	GRCz11	Prim-5-1	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442836	GRCz11	Prim-5-1	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442567	GRCz11	Prim-5-2	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442657	GRCz11	Prim-5-2	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442747	GRCz11	Prim-5-2	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442837	GRCz11	Prim-5-2	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442568	GRCz11	Prim-5-3	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442658	GRCz11	Prim-5-3	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442748	GRCz11	Prim-5-3	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442838	GRCz11	Prim-5-3	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442569	GRCz11	Prim-5-4	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442659	GRCz11	Prim-5-4	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442749	GRCz11	Prim-5-4	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442839	GRCz11	Prim-5-4	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442570	GRCz11	Prim-5-5	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442660	GRCz11	Prim-5-5	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442750	GRCz11	Prim-5-5	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442840	GRCz11	Prim-5-5	Prim-5	white	Prim-5	1440	24	Prim-5
+ERR1442571	GRCz11	Prim-15-1	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442661	GRCz11	Prim-15-1	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442751	GRCz11	Prim-15-1	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442841	GRCz11	Prim-15-1	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442572	GRCz11	Prim-15-2	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442662	GRCz11	Prim-15-2	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442752	GRCz11	Prim-15-2	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442842	GRCz11	Prim-15-2	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442573	GRCz11	Prim-15-3	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442663	GRCz11	Prim-15-3	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442753	GRCz11	Prim-15-3	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442843	GRCz11	Prim-15-3	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442574	GRCz11	Prim-15-4	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442664	GRCz11	Prim-15-4	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442754	GRCz11	Prim-15-4	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442844	GRCz11	Prim-15-4	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442575	GRCz11	Prim-15-5	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442665	GRCz11	Prim-15-5	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442755	GRCz11	Prim-15-5	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442845	GRCz11	Prim-15-5	Prim-15	white	Prim-15	1800	30	Prim-15
+ERR1442576	GRCz11	Prim-25-1	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442666	GRCz11	Prim-25-1	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442756	GRCz11	Prim-25-1	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442846	GRCz11	Prim-25-1	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442577	GRCz11	Prim-25-2	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442667	GRCz11	Prim-25-2	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442757	GRCz11	Prim-25-2	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442847	GRCz11	Prim-25-2	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442578	GRCz11	Prim-25-3	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442668	GRCz11	Prim-25-3	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442758	GRCz11	Prim-25-3	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442848	GRCz11	Prim-25-3	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442579	GRCz11	Prim-25-4	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442669	GRCz11	Prim-25-4	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442759	GRCz11	Prim-25-4	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442849	GRCz11	Prim-25-4	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442580	GRCz11	Prim-25-5	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442670	GRCz11	Prim-25-5	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442760	GRCz11	Prim-25-5	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442850	GRCz11	Prim-25-5	Prim-25	white	Prim-25	2160	36	Prim-25
+ERR1442581	GRCz11	Long-pec-1	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442671	GRCz11	Long-pec-1	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442761	GRCz11	Long-pec-1	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442851	GRCz11	Long-pec-1	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442582	GRCz11	Long-pec-2	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442672	GRCz11	Long-pec-2	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442762	GRCz11	Long-pec-2	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442852	GRCz11	Long-pec-2	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442583	GRCz11	Long-pec-3	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442673	GRCz11	Long-pec-3	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442763	GRCz11	Long-pec-3	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442853	GRCz11	Long-pec-3	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442584	GRCz11	Long-pec-4	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442674	GRCz11	Long-pec-4	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442764	GRCz11	Long-pec-4	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442854	GRCz11	Long-pec-4	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442585	GRCz11	Long-pec-5	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442675	GRCz11	Long-pec-5	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442765	GRCz11	Long-pec-5	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442855	GRCz11	Long-pec-5	Long-pec	white	Long-pec	2880	48	Long-pec
+ERR1442586	GRCz11	Protruding-mouth-1	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442676	GRCz11	Protruding-mouth-1	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442766	GRCz11	Protruding-mouth-1	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442856	GRCz11	Protruding-mouth-1	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442587	GRCz11	Protruding-mouth-2	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442677	GRCz11	Protruding-mouth-2	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442767	GRCz11	Protruding-mouth-2	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442857	GRCz11	Protruding-mouth-2	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442588	GRCz11	Protruding-mouth-3	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442678	GRCz11	Protruding-mouth-3	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442768	GRCz11	Protruding-mouth-3	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442858	GRCz11	Protruding-mouth-3	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442589	GRCz11	Protruding-mouth-4	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442679	GRCz11	Protruding-mouth-4	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442769	GRCz11	Protruding-mouth-4	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442859	GRCz11	Protruding-mouth-4	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442590	GRCz11	Protruding-mouth-5	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442680	GRCz11	Protruding-mouth-5	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442770	GRCz11	Protruding-mouth-5	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442860	GRCz11	Protruding-mouth-5	Protruding-mouth	white	Protruding-mouth	4320	72	Protruding-mouth
+ERR1442591	GRCz11	Day-4-1	Day-4	white	Day-4	5760	96	Day-4
+ERR1442681	GRCz11	Day-4-1	Day-4	white	Day-4	5760	96	Day-4
+ERR1442771	GRCz11	Day-4-1	Day-4	white	Day-4	5760	96	Day-4
+ERR1442861	GRCz11	Day-4-1	Day-4	white	Day-4	5760	96	Day-4
+ERR1442592	GRCz11	Day-4-2	Day-4	white	Day-4	5760	96	Day-4
+ERR1442682	GRCz11	Day-4-2	Day-4	white	Day-4	5760	96	Day-4
+ERR1442772	GRCz11	Day-4-2	Day-4	white	Day-4	5760	96	Day-4
+ERR1442862	GRCz11	Day-4-2	Day-4	white	Day-4	5760	96	Day-4
+ERR1442593	GRCz11	Day-4-3	Day-4	white	Day-4	5760	96	Day-4
+ERR1442683	GRCz11	Day-4-3	Day-4	white	Day-4	5760	96	Day-4
+ERR1442773	GRCz11	Day-4-3	Day-4	white	Day-4	5760	96	Day-4
+ERR1442863	GRCz11	Day-4-3	Day-4	white	Day-4	5760	96	Day-4
+ERR1442594	GRCz11	Day-4-4	Day-4	white	Day-4	5760	96	Day-4
+ERR1442684	GRCz11	Day-4-4	Day-4	white	Day-4	5760	96	Day-4
+ERR1442774	GRCz11	Day-4-4	Day-4	white	Day-4	5760	96	Day-4
+ERR1442864	GRCz11	Day-4-4	Day-4	white	Day-4	5760	96	Day-4
+ERR1442595	GRCz11	Day-4-5	Day-4	white	Day-4	5760	96	Day-4
+ERR1442685	GRCz11	Day-4-5	Day-4	white	Day-4	5760	96	Day-4
+ERR1442775	GRCz11	Day-4-5	Day-4	white	Day-4	5760	96	Day-4
+ERR1442865	GRCz11	Day-4-5	Day-4	white	Day-4	5760	96	Day-4
+ERR1442596	GRCz11	Day-5-1	Day-5	white	Day-5	7200	120	Day-5
+ERR1442686	GRCz11	Day-5-1	Day-5	white	Day-5	7200	120	Day-5
+ERR1442776	GRCz11	Day-5-1	Day-5	white	Day-5	7200	120	Day-5
+ERR1442866	GRCz11	Day-5-1	Day-5	white	Day-5	7200	120	Day-5
+ERR1442597	GRCz11	Day-5-2	Day-5	white	Day-5	7200	120	Day-5
+ERR1442687	GRCz11	Day-5-2	Day-5	white	Day-5	7200	120	Day-5
+ERR1442777	GRCz11	Day-5-2	Day-5	white	Day-5	7200	120	Day-5
+ERR1442867	GRCz11	Day-5-2	Day-5	white	Day-5	7200	120	Day-5
+ERR1442598	GRCz11	Day-5-3	Day-5	white	Day-5	7200	120	Day-5
+ERR1442688	GRCz11	Day-5-3	Day-5	white	Day-5	7200	120	Day-5
+ERR1442778	GRCz11	Day-5-3	Day-5	white	Day-5	7200	120	Day-5
+ERR1442868	GRCz11	Day-5-3	Day-5	white	Day-5	7200	120	Day-5
+ERR1442599	GRCz11	Day-5-4	Day-5	white	Day-5	7200	120	Day-5
+ERR1442689	GRCz11	Day-5-4	Day-5	white	Day-5	7200	120	Day-5
+ERR1442779	GRCz11	Day-5-4	Day-5	white	Day-5	7200	120	Day-5
+ERR1442869	GRCz11	Day-5-4	Day-5	white	Day-5	7200	120	Day-5
+ERR1442600	GRCz11	Day-5-5	Day-5	white	Day-5	7200	120	Day-5
+ERR1442690	GRCz11	Day-5-5	Day-5	white	Day-5	7200	120	Day-5
+ERR1442780	GRCz11	Day-5-5	Day-5	white	Day-5	7200	120	Day-5
+ERR1442870	GRCz11	Day-5-5	Day-5	white	Day-5	7200	120	Day-5
+ERR1442601	GRCz11	Shield-1	Shield	white	Shield	360	6	Shield
+ERR1442691	GRCz11	Shield-1	Shield	white	Shield	360	6	Shield
+ERR1442781	GRCz11	Shield-1	Shield	white	Shield	360	6	Shield
+ERR1442871	GRCz11	Shield-1	Shield	white	Shield	360	6	Shield
+ERR1442602	GRCz11	Shield-2	Shield	white	Shield	360	6	Shield
+ERR1442692	GRCz11	Shield-2	Shield	white	Shield	360	6	Shield
+ERR1442782	GRCz11	Shield-2	Shield	white	Shield	360	6	Shield
+ERR1442872	GRCz11	Shield-2	Shield	white	Shield	360	6	Shield
+ERR1442603	GRCz11	Shield-3	Shield	white	Shield	360	6	Shield
+ERR1442693	GRCz11	Shield-3	Shield	white	Shield	360	6	Shield
+ERR1442783	GRCz11	Shield-3	Shield	white	Shield	360	6	Shield
+ERR1442873	GRCz11	Shield-3	Shield	white	Shield	360	6	Shield
+ERR1442604	GRCz11	Shield-4	Shield	white	Shield	360	6	Shield
+ERR1442694	GRCz11	Shield-4	Shield	white	Shield	360	6	Shield
+ERR1442784	GRCz11	Shield-4	Shield	white	Shield	360	6	Shield
+ERR1442874	GRCz11	Shield-4	Shield	white	Shield	360	6	Shield
+ERR1442605	GRCz11	Shield-5	Shield	white	Shield	360	6	Shield
+ERR1442695	GRCz11	Shield-5	Shield	white	Shield	360	6	Shield
+ERR1442785	GRCz11	Shield-5	Shield	white	Shield	360	6	Shield
+ERR1442875	GRCz11	Shield-5	Shield	white	Shield	360	6	Shield
+ERR1442606	GRCz11	75pc-epiboly-1	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442696	GRCz11	75pc-epiboly-1	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442786	GRCz11	75pc-epiboly-1	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442876	GRCz11	75pc-epiboly-1	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442607	GRCz11	75pc-epiboly-2	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442697	GRCz11	75pc-epiboly-2	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442787	GRCz11	75pc-epiboly-2	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442877	GRCz11	75pc-epiboly-2	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442608	GRCz11	75pc-epiboly-3	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442698	GRCz11	75pc-epiboly-3	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442788	GRCz11	75pc-epiboly-3	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442878	GRCz11	75pc-epiboly-3	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442609	GRCz11	75pc-epiboly-4	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442699	GRCz11	75pc-epiboly-4	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442789	GRCz11	75pc-epiboly-4	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442879	GRCz11	75pc-epiboly-4	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442610	GRCz11	75pc-epiboly-5	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442700	GRCz11	75pc-epiboly-5	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442790	GRCz11	75pc-epiboly-5	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442880	GRCz11	75pc-epiboly-5	75pc-epiboly	white	75pc-epiboly	480	8	75pc-epiboly
+ERR1442611	GRCz11	14-19-somites-1	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442701	GRCz11	14-19-somites-1	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442791	GRCz11	14-19-somites-1	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442881	GRCz11	14-19-somites-1	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442612	GRCz11	14-19-somites-2	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442702	GRCz11	14-19-somites-2	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442792	GRCz11	14-19-somites-2	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442882	GRCz11	14-19-somites-2	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442613	GRCz11	14-19-somites-3	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442703	GRCz11	14-19-somites-3	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442793	GRCz11	14-19-somites-3	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442883	GRCz11	14-19-somites-3	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442614	GRCz11	14-19-somites-4	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442704	GRCz11	14-19-somites-4	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442794	GRCz11	14-19-somites-4	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442884	GRCz11	14-19-somites-4	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442615	GRCz11	14-19-somites-5	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442705	GRCz11	14-19-somites-5	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442795	GRCz11	14-19-somites-5	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442885	GRCz11	14-19-somites-5	14-19-somites	white	14-19-somites	960	16	14-19-somites
+ERR1442616	GRCz11	20-25-somites-1	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442706	GRCz11	20-25-somites-1	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442796	GRCz11	20-25-somites-1	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442886	GRCz11	20-25-somites-1	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442617	GRCz11	20-25-somites-2	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442707	GRCz11	20-25-somites-2	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442797	GRCz11	20-25-somites-2	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442887	GRCz11	20-25-somites-2	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442618	GRCz11	20-25-somites-3	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442708	GRCz11	20-25-somites-3	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442798	GRCz11	20-25-somites-3	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442888	GRCz11	20-25-somites-3	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442619	GRCz11	20-25-somites-4	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442709	GRCz11	20-25-somites-4	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442799	GRCz11	20-25-somites-4	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442889	GRCz11	20-25-somites-4	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442620	GRCz11	20-25-somites-5	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442710	GRCz11	20-25-somites-5	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442800	GRCz11	20-25-somites-5	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442890	GRCz11	20-25-somites-5	20-25-somites	white	20-25-somites	1140	19	20-25-somites
+ERR1442621	GRCz11	Dome-1	Dome	white	Dome	259.8	4.33	Dome
+ERR1442711	GRCz11	Dome-1	Dome	white	Dome	259.8	4.33	Dome
+ERR1442801	GRCz11	Dome-1	Dome	white	Dome	259.8	4.33	Dome
+ERR1442891	GRCz11	Dome-1	Dome	white	Dome	259.8	4.33	Dome
+ERR1442622	GRCz11	Dome-2	Dome	white	Dome	259.8	4.33	Dome
+ERR1442712	GRCz11	Dome-2	Dome	white	Dome	259.8	4.33	Dome
+ERR1442802	GRCz11	Dome-2	Dome	white	Dome	259.8	4.33	Dome
+ERR1442892	GRCz11	Dome-2	Dome	white	Dome	259.8	4.33	Dome
+ERR1442623	GRCz11	Dome-3	Dome	white	Dome	259.8	4.33	Dome
+ERR1442713	GRCz11	Dome-3	Dome	white	Dome	259.8	4.33	Dome
+ERR1442803	GRCz11	Dome-3	Dome	white	Dome	259.8	4.33	Dome
+ERR1442893	GRCz11	Dome-3	Dome	white	Dome	259.8	4.33	Dome
+ERR1442624	GRCz11	Dome-4	Dome	white	Dome	259.8	4.33	Dome
+ERR1442714	GRCz11	Dome-4	Dome	white	Dome	259.8	4.33	Dome
+ERR1442804	GRCz11	Dome-4	Dome	white	Dome	259.8	4.33	Dome
+ERR1442894	GRCz11	Dome-4	Dome	white	Dome	259.8	4.33	Dome
+ERR1442625	GRCz11	Dome-5	Dome	white	Dome	259.8	4.33	Dome
+ERR1442715	GRCz11	Dome-5	Dome	white	Dome	259.8	4.33	Dome
+ERR1442805	GRCz11	Dome-5	Dome	white	Dome	259.8	4.33	Dome
+ERR1442895	GRCz11	Dome-5	Dome	white	Dome	259.8	4.33	Dome
+ERR1442626	GRCz11	2-cell-1	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442716	GRCz11	2-cell-1	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442806	GRCz11	2-cell-1	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442896	GRCz11	2-cell-1	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442627	GRCz11	2-cell-2	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442717	GRCz11	2-cell-2	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442807	GRCz11	2-cell-2	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442897	GRCz11	2-cell-2	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442628	GRCz11	2-cell-3	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442718	GRCz11	2-cell-3	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442808	GRCz11	2-cell-3	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442898	GRCz11	2-cell-3	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442629	GRCz11	2-cell-4	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442719	GRCz11	2-cell-4	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442809	GRCz11	2-cell-4	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442899	GRCz11	2-cell-4	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442630	GRCz11	2-cell-5	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442720	GRCz11	2-cell-5	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442810	GRCz11	2-cell-5	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442900	GRCz11	2-cell-5	2-cell	white	2-cell	45	0.75	2-cell
+ERR1442631	GRCz11	128-cell-1	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442721	GRCz11	128-cell-1	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442811	GRCz11	128-cell-1	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442901	GRCz11	128-cell-1	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442632	GRCz11	128-cell-2	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442722	GRCz11	128-cell-2	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442812	GRCz11	128-cell-2	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442902	GRCz11	128-cell-2	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442633	GRCz11	128-cell-3	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442723	GRCz11	128-cell-3	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442813	GRCz11	128-cell-3	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442903	GRCz11	128-cell-3	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442634	GRCz11	128-cell-4	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442724	GRCz11	128-cell-4	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442814	GRCz11	128-cell-4	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442904	GRCz11	128-cell-4	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442635	GRCz11	128-cell-5	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442725	GRCz11	128-cell-5	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442815	GRCz11	128-cell-5	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442905	GRCz11	128-cell-5	128-cell	white	128-cell	135	2.25	128-cell
+ERR1442636	GRCz11	1-4-somites-1	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442726	GRCz11	1-4-somites-1	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442816	GRCz11	1-4-somites-1	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442906	GRCz11	1-4-somites-1	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442637	GRCz11	1-4-somites-2	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442727	GRCz11	1-4-somites-2	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442817	GRCz11	1-4-somites-2	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442907	GRCz11	1-4-somites-2	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442638	GRCz11	1-4-somites-3	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442728	GRCz11	1-4-somites-3	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442818	GRCz11	1-4-somites-3	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442908	GRCz11	1-4-somites-3	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442639	GRCz11	1-4-somites-4	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442729	GRCz11	1-4-somites-4	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442819	GRCz11	1-4-somites-4	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442909	GRCz11	1-4-somites-4	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442640	GRCz11	1-4-somites-5	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442730	GRCz11	1-4-somites-5	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442820	GRCz11	1-4-somites-5	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442910	GRCz11	1-4-somites-5	1-4-somites	white	1-4-somites	619.8	10.33	1-4-somites
+ERR1442641	GRCz11	1k-cell-1	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442731	GRCz11	1k-cell-1	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442821	GRCz11	1k-cell-1	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442911	GRCz11	1k-cell-1	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442642	GRCz11	1k-cell-2	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442732	GRCz11	1k-cell-2	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442822	GRCz11	1k-cell-2	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442912	GRCz11	1k-cell-2	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442643	GRCz11	1k-cell-3	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442733	GRCz11	1k-cell-3	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442823	GRCz11	1k-cell-3	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442913	GRCz11	1k-cell-3	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442644	GRCz11	1k-cell-4	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442734	GRCz11	1k-cell-4	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442824	GRCz11	1k-cell-4	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442914	GRCz11	1k-cell-4	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442645	GRCz11	1k-cell-5	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442735	GRCz11	1k-cell-5	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442825	GRCz11	1k-cell-5	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442915	GRCz11	1k-cell-5	1k-cell	white	1k-cell	180	3	1k-cell
+ERR1442646	GRCz11	1-cell-1	1-cell	white	1-cell	0	0	1-cell
+ERR1442736	GRCz11	1-cell-1	1-cell	white	1-cell	0	0	1-cell
+ERR1442826	GRCz11	1-cell-1	1-cell	white	1-cell	0	0	1-cell
+ERR1442916	GRCz11	1-cell-1	1-cell	white	1-cell	0	0	1-cell
+ERR1442647	GRCz11	1-cell-2	1-cell	white	1-cell	0	0	1-cell
+ERR1442737	GRCz11	1-cell-2	1-cell	white	1-cell	0	0	1-cell
+ERR1442827	GRCz11	1-cell-2	1-cell	white	1-cell	0	0	1-cell
+ERR1442917	GRCz11	1-cell-2	1-cell	white	1-cell	0	0	1-cell
+ERR1442648	GRCz11	1-cell-3	1-cell	white	1-cell	0	0	1-cell
+ERR1442738	GRCz11	1-cell-3	1-cell	white	1-cell	0	0	1-cell
+ERR1442828	GRCz11	1-cell-3	1-cell	white	1-cell	0	0	1-cell
+ERR1442918	GRCz11	1-cell-3	1-cell	white	1-cell	0	0	1-cell
+ERR1442649	GRCz11	1-cell-4	1-cell	white	1-cell	0	0	1-cell
+ERR1442739	GRCz11	1-cell-4	1-cell	white	1-cell	0	0	1-cell
+ERR1442829	GRCz11	1-cell-4	1-cell	white	1-cell	0	0	1-cell
+ERR1442919	GRCz11	1-cell-4	1-cell	white	1-cell	0	0	1-cell
+ERR1442650	GRCz11	1-cell-5	1-cell	white	1-cell	0	0	1-cell
+ERR1442740	GRCz11	1-cell-5	1-cell	white	1-cell	0	0	1-cell
+ERR1442830	GRCz11	1-cell-5	1-cell	white	1-cell	0	0	1-cell
+ERR1442920	GRCz11	1-cell-5	1-cell	white	1-cell	0	0	1-cell
