@@ -39,28 +39,43 @@ def gpr(
     # n_samples: number of timepoints
     # map the timeseries to linear space (so the gpr works nicely)
     X = np.repeat(range(0, len(timepoints)), n_replicates).reshape(-1, 1).astype(float)
+    X_pred = np.atleast_2d(np.linspace(np.min(X), np.max(X), len(extended_timepoints))).T
+    
     # X = np.repeat(timepoints, n_replicates).reshape(-1, 1)
+    # X_pred = np.atleast_2d(extended_timepoints).T
 
-    # map the predictions to the same space as the extended_timepoints
-    xp = []
-    for n in range(len(timepoints))[1:]:
-        points = [t for t in extended_timepoints if t >= timepoints[n - 1] and t < timepoints[n]]
-        xp.extend([n-1 + t/timepoints[n] for t in points])
-    xp.append(float(n))  # add last point
-    X_pred = np.atleast_2d(xp).T
-    # # map the predictions to the same space as the extended_timepoints
+    # X = np.repeat(range(0, len(timepoints)), n_replicates).reshape(-1, 1).astype(float)
     # divisor = max(timepoints)/X.max()
     # X_pred = np.atleast_2d([t/divisor for t in extended_timepoints]).T
-    # # map the predictions to the same space as the extended_timepoints
+    
+    # X = np.repeat(range(0, len(timepoints)), n_replicates).reshape(-1, 1).astype(float)
     # xp = []
     # for n in range(len(timepoints))[1:]:
     #     npoints = len([t for t in extended_timepoints if t >= timepoints[n-1] and t < timepoints[n]])
     #     xp.extend(list(np.linspace(n-1, n, npoints, endpoint=False)))
     # xp.append(float(n))  # add last point
     # X_pred = np.atleast_2d(xp).T
-    # # map the predictions
-    # X_pred = np.atleast_2d(np.linspace(np.min(X), np.max(X), len(extended_timepoints))).T
-    # X_pred = np.atleast_2d(extended_timepoints).T
+    
+    # X = np.repeat(range(0, len(timepoints)), n_replicates).reshape(-1, 1).astype(float)
+    # xp = []
+    # for n in range(len(timepoints))[1:]:
+    #     points = [t for t in extended_timepoints if t >= timepoints[n - 1] and t < timepoints[n]]
+    #     xp.extend([n-1 + t/timepoints[n] for t in points])
+    # xp.append(float(n))  # add last point
+    # X_pred = np.atleast_2d(xp).T
+    
+    # X = np.repeat(range(0, len(timepoints)), n_replicates).reshape(-1, 1).astype(float)
+    # if all_numeric(timepoints) and all_numeric(extended_timepoints):
+    #     # map the predictions to the same space as the extended_timepoints
+    #     xp = []
+    #     for n in range(len(timepoints))[1:]:
+    #         points = [t for t in extended_timepoints if t >= timepoints[n - 1] and t < timepoints[n]]
+    #         xp.extend([n-1 + t/timepoints[n] for t in points])
+    #     xp.append(float(n))  # add last point
+    #     X_pred = np.atleast_2d(xp).T
+    # else:
+    #     # map the predictions to the same space as the GPR (linear space)
+    #     X_pred = np.atleast_2d(np.linspace(np.min(X), np.max(X), len(extended_timepoints))).T
 
     # y:
     # target values: expression scores per timepoint
