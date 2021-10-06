@@ -4,14 +4,15 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 
 
-def _normalizedata(data):
+def scale(data):
+    """scale array between 0-1"""
     return (data - np.min(data)) / (np.max(data) - np.min(data))
 
 
-def score_normalization(scores: np.array) -> pd.DataFrame:
+def score_normalization(scores: np.array, weight_expr=1, weight_r2=1) -> pd.DataFrame:
     df = scores
-    df["scaled_delta"] = _normalizedata(df["delta"])
-    df["score"] = (df["scaled_delta"].pow(1))*(df["r2"].pow(1))
+    df["scaled_delta"] = scale(df["delta"])
+    df["score"] = df["scaled_delta"].pow(weight_expr) * df["r2"].pow(weight_r2)
     df = df.sort_values("score", ascending=False)
     return df
 
@@ -44,7 +45,8 @@ def plot_scores(normscores: pd.DataFrame, highlight_top_n: int = None):
 
 
 def best_n_genes(normscores, n_genes, to_file=None) -> list:
-    selected_genes = list(normscores.reset_index()[0:n_genes]["gene"])
+    total_genes = normscores.shape[0]
+    selected_genes = list(normscores.reset_index()[0:min(n_genes, total_genes)]["gene"])
     if to_file:
         df = pd.DataFrame(selected_genes, columns=["gene"])
         df.to_csv(to_file, sep="\t", index=False)
