@@ -35,7 +35,7 @@ def _str_inf_ts(timepoints, n):
 
 def _flt_inf_ts(timepoints, n):
     t_extended = []
-    timepoints = [round(float(e), 2) for e in timepoints]
+    timepoints = [round(float(t), 2) for t in timepoints]
     for t in range(len(timepoints)):
         curr_timepoint = timepoints[t]
         diff_time = 0
