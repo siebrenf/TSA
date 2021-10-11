@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 import seaborn as sns
-from sklearn.cluster import KMeans
 
 
 def scale(data):
@@ -46,6 +45,11 @@ def plot_scores(normscores: pd.DataFrame, highlight_top_n: int = None):
 
 
 def best_n_genes(normscores, n=None, frac=None, to_file=None) -> list:
+    """
+    Return the top n or top fraction of genes. 
+    Also saves to file if a path is given.
+    """
+    normscores = normscores.sort_values("score", ascending=False)
     total_genes = normscores.shape[0]
     if n and frac:
         raise ValueError("Please enter a value for `frac` OR `n`, not both")
@@ -78,18 +82,3 @@ def best_n_genes(normscores, n=None, frac=None, to_file=None) -> list:
 # print(normscores)
 # print(best_n_genes(normscores, 4).tolist())
 # plot_scores(normscores, 4)
-
-
-def cluster_genes(df, genes):
-    df = df[df.index.isin(genes)]
-
-    # select a number of clusters based on the number of genes
-    n_clusters = max(10, int(len(genes)/300))
-
-    # K-means clustering on TPMs
-    kmeans = KMeans(init="k-means++", n_clusters=n_clusters, n_init=4)
-    kmeans.fit(df)
-    k = kmeans.predict(df)
-
-    gene_cluster_df = pd.DataFrame({"gene": df.index, "cluster": k}).set_index("gene")
-    return gene_cluster_df

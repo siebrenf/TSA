@@ -18,7 +18,7 @@ def gpr(
         run_n: int = None,
 ):
     """
-    Infers GPRs for each gene in the template_tpms dataframe (combining replicates).
+    Infers Gaussian Process Regressions for each gene in the template_tpms dataframe (combining replicates).
 
     Returns 2 dataframe with gene names as index.
     The first dataframe contains inferred expression levels with the inferred time as column names.

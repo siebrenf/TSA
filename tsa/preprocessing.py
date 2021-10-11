@@ -47,11 +47,10 @@ def tpm_normalization(
 
 def get_sample_info(samples: pd.DataFrame):
     # check its what we expect
-    assert "time" in samples
-    assert samples.index.name == "sample"
-    assert samples.shape[1] == 1
+    assert "time" in samples.columns
+    assert samples.index.dtype == "object"
 
-    # chronological order of samples
+    # (assumed to be chronological) order of samples
     sample_order = samples.index.to_list()
 
     # samples per timepoint
@@ -65,7 +64,9 @@ def get_sample_info(samples: pd.DataFrame):
 
 
 def merge_replicates(df: pd.DataFrame, time2samples: dict, how="mean") -> pd.DataFrame:
-    """merge replicate columns by averaging the values"""
+    """
+    Merge replicate columns by 'mean' or 'median'
+    """
     # TODO: merge with GPR?
     if how == "mean":
         for timepoint in time2samples:

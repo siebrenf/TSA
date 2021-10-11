@@ -67,6 +67,31 @@ def inference_timeseries(timepoints: list, n: int = 10) -> list:
 
     return t_extended
 
-
 # print(inference_timeseries([1, 2, 3], n=3))
 # print(inference_timeseries(["a", "b", "c"], n=3))
+
+
+def subset_df(df, rows=None, columns=None, sort=True):
+    """
+    (efficiently) reconstruct a dataframe by row and/or column (name or number)
+    
+    rows: list of row/index names or numbers
+    columns: list of column names or numbers
+    """
+    if rows:
+        if set(rows).issubset(set(df.index)):
+            # rows contains dataframe row names
+            df = df.loc[rows]
+        else:
+            # rows contains dataframe row numbers
+            df = df.iloc[rows]
+    if columns:
+        if set(columns).issubset(set(df.columns)):
+            # columns contains dataframe column names
+            df = df[columns]
+        else:
+            # columns contains dataframe column numbers
+            df = df[[df.columns[i] for i in columns]]
+    if sort:
+        df.sort_index(inplace=True)
+    return df
