@@ -1,0 +1,12 @@
+original_time	inferred_time
+64-cell	2-cell+5/10
+Shield	Dome+5/10
+75pc-epiboly	Shield+2/10
+5-9-somites	75pc-epiboly+5/10
+14-19-somites	1-4-somites+3/10
+20-25-somites	20-25-somites+4/10
+Prim-5	20-25-somites+9/10
+Prim-15	Prim-5+7/10
+Prim-25	Prim-15
+Long-pec	Prim-25+9/10
+Protruding-mouth	Long-pec+7/10

@@ -4,14 +4,15 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 
 
-def _normalizedata(data):
+def scale(data):
+    """scale array between 0-1"""
     return (data - np.min(data)) / (np.max(data) - np.min(data))
 
 
-def score_normalization(scores: np.array) -> pd.DataFrame:
+def score_normalization(scores: np.array, weight_expr=1, weight_r2=1) -> pd.DataFrame:
     df = scores
-    df["scaled_delta"] = _normalizedata(df["delta"])
-    df["score"] = (df["scaled_delta"].pow(1))*(df["r2"].pow(1))
+    df["scaled_delta"] = scale(df["delta"])
+    df["score"] = df["scaled_delta"].pow(weight_expr) * df["r2"].pow(weight_r2)
     df = df.sort_values("score", ascending=False)
     return df
 
@@ -43,8 +44,21 @@ def plot_scores(normscores: pd.DataFrame, highlight_top_n: int = None):
     plt.show()
 
 
-def best_n_genes(normscores, n_genes, to_file=None) -> list:
-    selected_genes = list(normscores.reset_index()[0:n_genes]["gene"])
+def best_n_genes(normscores, n=None, frac=None, to_file=None) -> list:
+    """
+    Return the top n or top fraction of genes. 
+    Also saves to file if a path is given.
+    """
+    normscores = normscores.sort_values("score", ascending=False)
+    total_genes = normscores.shape[0]
+    if n and frac:
+        raise ValueError("Please enter a value for `frac` OR `n`, not both")
+    elif n:
+        selected_genes = list(normscores.reset_index()[0:min(n, total_genes)]["gene"])
+    elif frac:
+        selected_genes = list(normscores.reset_index()[0:int(frac*total_genes)]["gene"])
+    else:
+        raise ValueError("Please specify `frac` OR `n`")
     if to_file:
         df = pd.DataFrame(selected_genes, columns=["gene"])
         df.to_csv(to_file, sep="\t", index=False)
