@@ -1,29 +1,18 @@
 import inspect
+import multiprocessing as mp
 import numpy as np
+import os
+import random
+from typing import Union, List
+
+from matplotlib import pyplot as plt
+import networkx as nx
 import pandas as pd
 from scipy.spatial.distance import cdist
-import networkx as nx
-from matplotlib import pyplot as plt
-import random
 import sklearn
 
 from tsa.clustering import top_cluster_genes
 from tsa.utils import all_numeric, list2floats
-
-
-# def get_cost_matrix(template_tpms, query_tpms, selected_genes, time2samples):
-#     template = template_tpms.loc[selected_genes]
-#     template = template.to_numpy(dtype=np.float64)
-
-#     query = query_tpms.loc[selected_genes]
-#     # average technical replicates
-#     for timepoint in time2samples:
-#         query[timepoint] = query[time2samples[timepoint]].mean(axis=1)
-#     query = query.filter(items=time2samples.keys())
-#     query = query.to_numpy()
-
-#     cost_matrix = cdist(template.T, query.T, metric='euclidean').T  # pairwise distance matrix
-#     return cost_matrix
 
 
 def get_cost_matrix(template_tpms, query_tpms, metric='euclidean'):
@@ -47,7 +36,6 @@ def best_alignment_graph(cost_matrix: np.array) -> tuple:
             node_i = (q, t)
             for t2 in range(t, len_template):
                 node_j = (q+1, t2)
-                # all_edges.append((node_i, node_j, cost_matrix[node_j]))
                 all_edges.append((node_i, node_j, cost_matrix[node_j]))
 
     # add final edges
@@ -64,20 +52,33 @@ def best_alignment_graph(cost_matrix: np.array) -> tuple:
     return best_path, best_score
 
 
-def _avg_alignments(paths: list, inference_time: list = None, is_time_numeric=False, force_chonological=True):
-    # average path
-    avg_path = [int(i) for i in paths.mean(axis=0)]
-
-    # std of average path
-    std_path = [i for i in paths.std(axis=0)]
+def combine_alignments(paths: List[list], inference_time: list = None, is_time_numeric: bool = False, force_chonological: bool = True, method: Union[str,int] = "mean"):
+    """
+    Combine {paths}, a list of integer lists, into a single list using the specified {method}.
+    If {method} is an integer, use that parcentile.
+    If {force_chonological} is True, the combined path will be made chronological.
     
+    This function also returns the standard deviation as a (2,n) numpy array.
+    If time is numeric, the std will be returned in inferred time, instead of column indeces.
+    """
+    # combine paths
+    if method=="mean":
+        path = [int(i) for i in np.mean(paths, axis=0)]
+    elif method=="median":
+        path = [int(i) for i in np.median(paths, axis=0)]
+    elif isinstance(method, int):
+        path = [int(i) for i in np.percentile(paths, q=int(method), axis=0)]
+    else:
+        raise ValueError("`method` must be 'mean', 'median' or a integer precentile")
+        
+    # standard deviation from the combined path
+    std_path = paths.std(axis=0).tolist()
+    # if time is numeric, we convert the std to inferred time
     if is_time_numeric:
         if inference_time is None:
             raise ValueError("`inference_time` is required when time is numeric")
-        
-        # path contains column indices, here we convert those to time
         end = len(inference_time)-1
-        for n, p in enumerate(avg_path):
+        for n, p in enumerate(path):
             inf_time = inference_time[p]
             std_time_min = abs(inference_time[max(0,   p - int(std_path[n]))]-inf_time)
             std_time_max = abs(inference_time[min(end, p + int(std_path[n]))]-inf_time)
@@ -85,72 +86,162 @@ def _avg_alignments(paths: list, inference_time: list = None, is_time_numeric=Fa
     std_path = np.array(std_path).T
     
     if force_chonological:
-        # if the average timepoint is later that the previous timepoint, increase it to match
-        for n in range(1, len(avg_path)):
-            if avg_path[n-1] > avg_path[n]:
-                avg_path[n] = avg_path[n-1]
+        # if an average timepoint is earlier than the previous timepoint, increase it to match
+        for n in range(1, len(path)):
+            if path[n-1] > path[n]:
+                path[n] = path[n-1]
                 
-    return avg_path, std_path
+    return path, std_path
 
 
-def avg_alignment(template_tpms_inf, query_tpms, gene_cluster_df, tries=10, frac=0.2, metric='correlation', showcase_gene=None, plot=True, verbose=True, return_std=False):
-    paths = np.zeros((tries, query_tpms.shape[1]))
-    for n in range(tries):
+def _parse_sampling(frac=None, n_clust=None, n_total=None):
+    """raise an error if not exactly one of the variables is specified"""
+    vals = sum([1 for _ in [frac, n_clust, n_total] if _ is not None])
+    if vals != 1:
+        raise ValueError("need either frac, n_clust or n_total")
+
+        
+def _sample_genes(gene_cluster_df, frac=None, n=None, r=None):    
+    # frac != None: fraction of genes per cluster
+    # n != None: fixed number of genes per cluster/divided over the number of clusters
+    # uses replacement if n was specified
+    genes = gene_cluster_df.groupby("cluster").sample(n=n, frac=frac, replace=bool(n), random_state=r).index.to_list() 
+    return genes
+
+
+def subset_alignment(template_tpms_inf, query_tpms, gene_cluster_df, frac=None, n=None, metric='correlation', r=None):
+    """
+    Apply a local time series alignment of {query_tpms} to {template_tpms_inf}, using a subset of genes.
+    The subset is drawn from {gene_cluster_df}, where a number of genes is used from each cluster.
+    This can be a {frac}tion of genes, or an exact {n}umber.
+    
+    When using this function in parallel, a {r}andom number is required.
+    
+    Returns an alignment path
+    """
+    genes = _sample_genes(gene_cluster_df, frac, n, r)
+    del gene_cluster_df
+    del frac
+    del n
+    del r
+
+    t = template_tpms_inf.loc[genes]
+    del template_tpms_inf
+    q = query_tpms.loc[genes]
+    del query_tpms
+    
+    cost_matrix = get_cost_matrix(t, q, metric)
+    path = best_alignment_graph(cost_matrix)[0]
+    del cost_matrix
+    
+    return path
+
+
+def multi_alignment(
+    template_tpms_inf, query_tpms, gene_cluster_df, 
+    tries=10, frac=None, n_clust=None, n_total=None, 
+    metric="correlation", ncpu=4,
+    showcase_gene=None, plot=True, verbose=True, return_std=False
+):
+    """
+    Run a number of subset_alignments (in parallel), using combine_alignments on the results.
+    
+    tries: number of times the alignment is performed.
+    frac: fraction of genes to use per cluster
+    n_clust: number of genes to use per cluster
+    n_total: total number of genes to use (rounding down if required)
+    """
+    _parse_sampling(frac, n_clust, n_total)
+    
+    # run tries in parallel
+    p =  max(1, min(ncpu, os.cpu_count()-1, tries))
+    pool = mp.Pool(processes=p)
+    
+    clusters = list(set(gene_cluster_df.cluster))
+    n_clusters = len(clusters)
+    if n_total:
+        # fixed number of genes divided over the number of clusters
+        n_clust = int(n_total/n_clusters)    
+    
+    jobs = [
+        pool.apply_async(
+            func=subset_alignment, 
+            args=(template_tpms_inf, query_tpms, gene_cluster_df, frac, n_clust, metric, random.randint(0, 999))
+        ) for _ in range(tries)
+    ]
+    paths = []
+    for try_n, j in enumerate(jobs):
         if verbose:
-            print(f"{int(100*n/tries)}%", end="\r")
+            print(f"{int(100*try_n/tries)}%", end="\r")
+        paths.append(j.get())
+    paths = np.asarray(paths)
+    pool.close()
+    pool.join()
 
-        # get a fraction of genes per cluster
-        genes = gene_cluster_df.groupby("cluster").sample(frac=frac).index.to_list()
-
-        t = template_tpms_inf[template_tpms_inf.index.isin(genes)]
-        q = query_tpms[query_tpms.index.isin(genes)]
-
-        cost_matrix = get_cost_matrix(t, q, metric)
-        best_path, _ = best_alignment_graph(cost_matrix)
-
-        paths[n] = best_path
-
+    # combine tries
     inference_time = list2floats(template_tpms_inf.columns)
     query_time = list2floats(query_tpms.columns)
     is_time_numeric = all_numeric(inference_time) and all_numeric(query_time)
-    avg_path, std_path = _avg_alignments(paths, inference_time, is_time_numeric)
+    path, std_path = combine_alignments(paths, inference_time, is_time_numeric, method="mean")
     
     if plot:
-        print(f"Average TSA of {tries} alignments with {int(frac*100)}% of genes per cluster \n"
-              f"({len(set(gene_cluster_df.cluster))} clusters, {len(q)} total genes)")
-        cm = pd.DataFrame(cost_matrix, index=q.columns, columns=t.columns)
-        plot_alignment(cm, avg_path, std_path)
-        
+        if verbose:
+            start_msg = f"TSA of {tries} alignments"
+            clust_msg = f" with {n_clusters} clusters" if n_clusters > 1 else ""
+            gene_no = int(len(query_tpms)*frac) if frac is not None else n_clusters*n_clust
+            print(f"\t{start_msg}{clust_msg}, {gene_no} genes.")
+        plot_alignment(query_time, inference_time, path, std_path, is_time_numeric)
+
         if is_time_numeric:
             # gene mapping only makes sense if both query and template are in numeric time
-            plot_gene(query_tpms, template_tpms_inf, avg_path, showcase_gene, scale=True)
-
+            plot_gene(query_tpms, template_tpms_inf, path, showcase_gene, scale=True)
+        
     if return_std:
-        return avg_path, std_path
-    return avg_path
+        return path, std_path
+    return path
 
 
-# def plot_alignment(cost_matrix, best_path):
-#     len_query, len_template = cost_matrix.shape
-#     q = list(range(len(best_path)))
-#     t = best_path
+# def avg_alignment(template_tpms_inf, query_tpms, gene_cluster_df, tries=10, frac=0.2, metric='correlation', showcase_gene=None, plot=True, verbose=True, return_std=False):
+#     paths = np.zeros((tries, query_tpms.shape[1]))
+#     for n in range(tries):
+#         if verbose:
+#             print(f"{int(100*n/tries)}%", end="\r")
 
-#     plt.rcParams['figure.figsize'] = [8, 6]
-#     plt.plot(q, t, alpha=0.5)
-#     plt.scatter(q, t, s=10, color="black")
-#     plt.title("local alignment")
-#     plt.ylabel("template")
-#     plt.ylim(0, len_template-1)
-#     plt.xlabel("query")
-#     plt.xlim(0, len_query-1)
-#     plt.show()
+#         # get a fraction of genes per cluster
+#         genes = gene_cluster_df.groupby("cluster").sample(frac=frac).index.to_list()
+
+#         t = template_tpms_inf[template_tpms_inf.index.isin(genes)]
+#         q = query_tpms[query_tpms.index.isin(genes)]
+
+#         cost_matrix = get_cost_matrix(t, q, metric)
+#         best_path, _ = best_alignment_graph(cost_matrix)
+
+#         paths[n] = best_path
+
+#     inference_time = list2floats(template_tpms_inf.columns)
+#     query_time = list2floats(query_tpms.columns)
+#     is_time_numeric = all_numeric(inference_time) and all_numeric(query_time)
+#     avg_path, std_path = _avg_alignments(paths, inference_time, is_time_numeric)
+    
+#     if plot:
+#         print(f"Average TSA of {tries} alignments with {int(frac*100)}% of genes per cluster \n"
+#               f"({len(set(gene_cluster_df.cluster))} clusters, {len(q)} total genes)")
+#         cm = pd.DataFrame(cost_matrix, index=q.columns, columns=t.columns)
+#         plot_alignment(cm, avg_path, std_path)
+        
+#         if is_time_numeric:
+#             # gene mapping only makes sense if both query and template are in numeric time
+#             plot_gene(query_tpms, template_tpms_inf, avg_path, showcase_gene, scale=True)
+
+#     if return_std:
+#         return avg_path, std_path
+#     return avg_path
 
 
-def plot_alignment(cost_matrix, best_path, std_path=None):
-    if all_numeric(cost_matrix.index) and all_numeric(cost_matrix.columns):
-        q = list2floats(cost_matrix.index)
-        template_time = list2floats(cost_matrix.columns)
-        t = [template_time[i] for i in best_path]
+def plot_alignment(query_time, template_time, path, std_path=None, is_time_numeric=False):
+    if is_time_numeric:
+        q = query_time
+        t = [template_time[i] for i in path]
         
         # add diagonal
         start = min(t[0], q[0])
@@ -160,12 +251,11 @@ def plot_alignment(cost_matrix, best_path, std_path=None):
         plt.ylim(t[0], t[-1])
         plt.xlim(q[0], q[-1])
     else:
-        q = list(range(len(best_path)))
-        t = best_path
+        q = list(range(len(path)))
+        t = path
 
-        len_query, len_template = cost_matrix.shape
-        plt.ylim(0, len_template-1)
-        plt.xlim(0, len_query-1)
+        plt.ylim(0, len(template_time)-1)
+        plt.xlim(0, len(query_time)-1)
     
     plt.plot(q, t, alpha=0.5)
     plt.scatter(q, t, s=10, color="black")
@@ -211,7 +301,7 @@ def plot_gene(query_tpms, template_tpms_inf, path, gene=None, scale=False):
     plt.show()
 
     
-def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=0.2, cycles=1, top_frac=0.8, filter_frac=0.2, method="skip_worst", verbose=True, **kwargs):
+def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=None, n_clust=None, n_total=None, cycles=1, top_frac=0.8, filter_frac=0.2, method="skip_worst", verbose=True, **kwargs):
     """
     Apply a local time series alignment of {query} to {template}.
     Returns the path (and standard deviation if {return_std} is True) for each cycle.
@@ -251,6 +341,10 @@ def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=
         numer of times the alignment is performed per average. Default is 10
     frac: float, optional
         fraction of genes to use (per cluster) for alignment. Default is 0.2
+    n_clust: int, optional
+        number of genes to use per cluster.
+    n_total: int, optional
+        total number of genes to use.
     metric: string, optional
         distance metric to apply for the TSA. See scipy's cdist for options. Default is 'correlation'
     
@@ -289,10 +383,10 @@ def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=
         if cycles >1, a list of lists with a path for each cycle.
         if return_std = True, returns tuple(s) containing the path and the standard deviation (both up and down).
     """
+    if frac is None and n_clust is None and n_total is None:
+        frac = 0.2  # default setting if none is provided
     if method not in ["skip_worst", "use_best"]:
         raise ValueError("`method` can be either 'skip_worst' or 'use_best'")
-    if frac > 1 or frac < 0:
-        raise ValueError("`frac` must be within [0,1]")
     if top_frac > 1 or top_frac < 0:
         raise ValueError("`top_frac` must be within [0,1]")
     if filter_frac > 1 or filter_frac < 0:
@@ -308,7 +402,7 @@ def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=
     alignment_kwargs = {}
     cluster_kwargs = {}
     if kwargs:
-        keys = inspect.getfullargspec(avg_alignment).args
+        keys = inspect.getfullargspec(multi_alignment).args
         alignment_kwargs = {k: kwargs[k] for k in keys if k in kwargs}
         keys = inspect.getfullargspec(top_cluster_genes).args
         cluster_kwargs = {k: kwargs[k] for k in keys if k in kwargs} 
@@ -330,7 +424,9 @@ def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=
     # initial TSA
     if verbose and cycles > 1:
         print(f"Cycle 1, using all {len(gene_cluster_df)} genes.\n")
-    path = avg_alignment(template, query, gene_cluster_df, tries=tries, frac=frac, **alignment_kwargs)
+    # path = avg_alignment(template, query, gene_cluster_df, tries=tries, frac=frac, **alignment_kwargs)
+    path = multi_alignment(template, query, gene_cluster_df, tries, frac, n_clust, n_total, verbose=verbose, **alignment_kwargs)
+    
     if cycles == 1:
         return path
     
@@ -349,6 +445,7 @@ def time_series_alignment(template, query, gene_cluster_df=None, tries=10, frac=
             else:
                 print(f"Cycle {n+1}, using the best {len(filt_gene_clusters)} genes.\n")
         
-        path = avg_alignment(template, query, cluster_method, tries=tries, frac=frac, **alignment_kwargs)
+        # path = avg_alignment(template, query, cluster_method, tries=tries, frac=frac, **alignment_kwargs)
+        path = multi_alignment(template, query, gene_cluster_df, tries, frac, n_clust, n_total, verbose=verbose, **alignment_kwargs)
         paths.append(path)
     return paths
