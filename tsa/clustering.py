@@ -1,11 +1,14 @@
+import math
+from matplotlib import pyplot as plt
 import pandas as pd
 import sklearn
 from sklearn.cluster import KMeans
+import warnings
 
 from tsa.utils import subset_df
 
 
-def cluster_genes(df, genes=None, n_clusters=None):
+def cluster_genes(df, genes=None, n_clusters=None, plot=True):
     """
     Clusters a gene expression dataframe with gene names as index by K-means clustering.
     Filters the dataframe for {genes} if provided.
@@ -28,6 +31,18 @@ def cluster_genes(df, genes=None, n_clusters=None):
     k = kmeans.predict(df)
 
     gene_cluster_df = pd.DataFrame({"gene": genes, "cluster": k}).set_index("gene")
+
+    if plot:
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            for c in range(n_clusters):
+                clust = df[gene_cluster_df.cluster == c]
+                clust.mean().plot(label=f"cluster {c} ({len(clust)} genes)")
+        plt.title("cluster patterns", fontsize=15)
+        plt.ylabel("normalized expression", fontsize=18)
+        plt.xlabel("time", fontsize=15)
+        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=15)
+        plt.show()
     return gene_cluster_df
 
 
@@ -79,7 +94,9 @@ def top_cluster_genes(template_tpms_inf, query_tpms, path, gene_cluster_df, top_
     
     if top_frac:
         # take the top fraction of each cluster
-        subset = subset.groupby("cluster").apply(lambda x: x.head(int(len(x)*top_frac))).reset_index(drop=True)
+        subset = subset.reset_index()
+        subset = subset.groupby("cluster").apply(lambda x: x.head(math.ceil(len(x)*top_frac))).reset_index(drop=True)
+        subset = subset.set_index("gene")
     
     if verbose:
         print("Top genes per cluster")

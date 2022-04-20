@@ -1,4 +1,7 @@
+import os
 from typing import Iterable
+
+import pandas as pd
 
 
 def isfloat(query):
@@ -95,3 +98,31 @@ def subset_df(df, rows=None, columns=None, sort=True):
     if sort:
         df.sort_index(inplace=True)
     return df
+
+
+def write_alignment(template_name, query_name, query_time2samples, extended_timepoints, path, alignment_dir=None, force=False):
+    mapped = pd.DataFrame(data={
+        "annotated_time": list(query_time2samples.keys()),
+        "inferred_time": [extended_timepoints[i] for i in path],
+        "samples": list(query_time2samples.values()),
+    }).set_index("annotated_time")
+    mapped["samples"] = mapped["samples"].astype(str)
+
+    if not alignment_dir:
+        alignment_dir = "alignments"
+    alignment_file = os.path.join(alignment_dir, f"{template_name}_to_{query_name}_alignment.tsv")
+    if not os.path.exists(alignment_file) or force:
+        print(f"Saving mapping in {alignment_file}")
+        mapped.to_csv(alignment_file, sep="\t")
+    else:
+        print(f"Alignment file already exists. Set 'force' to True to overwrite {alignment_file}")
+
+    return mapped
+
+
+def read_alignment(alignment_file):
+    fname = os.path.basename(alignment_file)
+    t_fname = fname.split("_to_")[0]
+    q_fname = fname.split("_to_")[1].replace("_alignment.tsv", "")
+    alignment = pd.read_csv(alignment_file, sep="\t", index_col=0)
+    return alignment, q_fname, t_fname
