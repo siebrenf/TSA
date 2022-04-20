@@ -52,7 +52,7 @@ def _flt_inf_ts(timepoints, n):
 
 def inference_timeseries(timepoints: list, n: int = 10) -> list:
     """
-    Extends the given list of timepoints to n points between for each original point, up to the final point.
+    Extends the given list of timepoints with n points for each original point (excluding the final point).
 
     Returns the extended list of named timepoints with added time.
 

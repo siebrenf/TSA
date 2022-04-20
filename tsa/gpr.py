@@ -1,10 +1,11 @@
+import warnings
+
 from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import Matern, WhiteKernel
 from sklearn.exceptions import ConvergenceWarning
-import warnings
 
 from tsa.utils import all_numeric
 
@@ -27,6 +28,7 @@ def gpr(
     Genes for which no model could be made contain zeroes and NaNs in the 2 dataframes, respectively.
     """
     timepoints = list(time2samples)
+    # assumption: all timepoints have an equal number of replicates
     n_replicates = len(time2samples[timepoints[0]])
     n_genes = len(template_tpms)
     output_index = template_tpms.index
@@ -48,7 +50,7 @@ def gpr(
     # n_features: 1 (time)
     # n_samples: number of timepoints
     x = np.repeat(range(0, len(timepoints)), n_replicates).reshape(-1, 1).astype(float)
-    # map the predictions dynamically, depending if the input it numeric
+    # map the predictions dynamically, depending on if the input is numeric
     # if the input is not numeric, map the predictions to linear space.
     x_pred = np.atleast_2d(np.linspace(np.min(x), np.max(x), len(extended_timepoints))).T
     if all_numeric(timepoints) and all_numeric(extended_timepoints):
@@ -115,27 +117,27 @@ def gpr(
 
 
 def plot_inference(x, y, x_pred, y_pred, sigma, delta, r2, n_replicates, gene):
-        plt.plot(x_pred, y_pred, 'b-', label='Prediction')
-        plt.fill(np.concatenate([x_pred, x_pred[::-1]]),
-                 np.concatenate([y_pred - 1.9600 * sigma,
-                                (y_pred + 1.9600 * sigma)[::-1]]),
-                 alpha=.2, fc='b', ec='None', label='95% confidence interval')
-        if n_replicates > 1:
-            for r in range(n_replicates):
-                x_replicate = x[np.array(range(0, x.shape[0], n_replicates)) + r]
-                y_replicate = y[np.array(range(0, y.shape[0], n_replicates)) + r]
-                plt.plot(x_replicate, y_replicate, '.', markersize=9, alpha=.7, label=f'Observations replicate {r+1}')
-        else:
-            plt.plot(x, y, 'r.', markersize=10, label='Observations')
+    plt.plot(x_pred, y_pred, 'b-', label='Prediction')
+    plt.fill(np.concatenate([x_pred, x_pred[::-1]]),
+             np.concatenate([y_pred - 1.9600 * sigma,
+                            (y_pred + 1.9600 * sigma)[::-1]]),
+             alpha=.2, fc='b', ec='None', label='95% confidence interval')
+    if n_replicates > 1:
+        for r in range(n_replicates):
+            x_replicate = x[np.array(range(0, x.shape[0], n_replicates)) + r]
+            y_replicate = y[np.array(range(0, y.shape[0], n_replicates)) + r]
+            plt.plot(x_replicate, y_replicate, '.', markersize=9, alpha=.7, label=f'Observations replicate {r+1}')
+    else:
+        plt.plot(x, y, 'r.', markersize=10, label='Observations')
 
-        plt.title(f"{gene}    "
-                  f"R\u00b2: {round(r2, 2)}    "
-                  f"|\u0394|: {round(delta, 2)}", 
-                  fontsize=15)
-        plt.xlabel("time", fontsize=15)
-        plt.ylabel("normalized gene expression", fontsize=15)
-        plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=15)
-        plt.show()
+    plt.title(f"{gene}    "
+              f"R\u00b2: {round(r2, 2)}    "
+              f"|\u0394|: {round(delta, 2)}",
+              fontsize=15)
+    plt.xlabel("time", fontsize=15)
+    plt.ylabel("normalized gene expression", fontsize=15)
+    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=15)
+    plt.show()
 
 
 # # map the predictions to linear space (so the gpr works nicely)

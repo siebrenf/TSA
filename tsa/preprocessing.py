@@ -1,6 +1,7 @@
+import random
+
 import numpy as np
 import pandas as pd
-import random
 from qnorm import quantile_normalize
 
 
@@ -13,10 +14,12 @@ def tpm_normalization(
         verbose=True,
 ) -> pd.DataFrame:
     """filter, (quantile) normalize and (log) transform a dataframe"""
+    bc = tpms.copy()
+
     # filter samples
     if column_order is not None:
-        bc = tpms[column_order]
-    
+        bc = bc[column_order]
+
     # filter genes
     if min_value is not None:
         b4 = bc.shape[0]
@@ -30,7 +33,7 @@ def tpm_normalization(
         aft = bc.shape[0]
         if b4 != aft and verbose:
             print(f"{b4-aft} genes with median below or equal to {min_median_value} TPM ({int(100*(b4-aft)/b4)}%)")
-    if verbose:
+    if bc.shape != tpms.shape and verbose:
         print(f"{bc.shape[0]} genes, {bc.shape[1]} samples left after filtering")
     
     # normalize & transform
@@ -46,9 +49,9 @@ def tpm_normalization(
 
 
 def get_sample_info(samples: pd.DataFrame):
-    # check its what we expect
-    assert "time" in samples.columns
-    assert samples.index.dtype == "object"
+    # check it's what we expect
+    assert "time" in samples.columns, "this function expects a column 'time'"
+    assert samples.index.dtype == "object", "this function expects sample names as the index"
 
     # (assumed to be chronological) order of samples
     sample_order = samples.index.to_list()

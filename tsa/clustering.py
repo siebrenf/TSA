@@ -46,7 +46,15 @@ def cluster_genes(df, genes=None, n_clusters=None, plot=True):
     return gene_cluster_df
 
 
-def top_cluster_genes(template_tpms_inf, query_tpms, path, gene_cluster_df, top_frac=0.2, filter_frac=0, scale=True, verbose=False):
+def top_cluster_genes(
+        template_tpms_inf,
+        query_tpms, path,
+        gene_cluster_df,
+        top_frac=0.2,
+        filter_frac=0,
+        scale=True,
+        verbose=False
+):
     # get 2 dataframe with desired genes and aligned timepoints
     genes = list(gene_cluster_df.index)
     template_Y = subset_df(template_tpms_inf, genes, path)
@@ -86,7 +94,7 @@ def top_cluster_genes(template_tpms_inf, query_tpms, path, gene_cluster_df, top_
         # drop the bottom fraction of each cluster
         keep = []
         for cluster in subset.cluster:
-            subset_cluster = subset[subset.cluster==cluster]
+            subset_cluster = subset[subset.cluster == cluster]
             top_n = int(len(subset_cluster)*(1-filter_frac))
             keep.extend(list(subset_cluster.head(top_n).index))
         subset = subset[subset.index.isin(keep)]
